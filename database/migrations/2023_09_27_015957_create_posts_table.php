@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('title', 100)->unique();
             $table->string('slug');
-            $table->string('extract');
-            $table->text('description');
+            $table->text('extract');
+            $table->longText('description');
             $table->enum('status', [1, 2])->default(1);
             $table->unsignedBigInteger('category_id')->nullable();
             $table->unsignedBigInteger('user_id')->nullable();

@@ -23,7 +23,7 @@
                 
                 <div class="form-group">
                     {!! Form::label('slug', 'Slug Etiqueta'); !!}
-                    {!! Form::text('slug', null, ['class' => 'form-control', 'placeholder' => 'Slug Etiqueta']); !!}
+                    {!! Form::text('slug', null, ['class' => 'form-control', 'placeholder' => 'Slug Etiqueta', 'readonly']); !!}
                     @error('slug')
                         <div class="text-danger">
                             {{ $message }}
@@ -53,14 +53,14 @@
 @stop
 
 @section('js')
-    <script src="{{ asset('vendor/jQuery-Plugin-stringToSlug-2.1.0/dist/jquery.stringtoslug.min.js') }}"></script>
     <script>
-        $(document).ready( function() {
-            $("#name").stringToSlug({
-                setEvents: 'keyup keydown blur',
-                getPut: '#slug',
-                space: '-'
-            });
-        });
+        document.addEventListener("DOMContentLoaded", ()=>{
+            const name = document.getElementById("name");
+
+            name.addEventListener("keyup", ()=>{
+                let slug_tmp = name.value.replaceAll(' ', '-');
+                document.getElementById('slug').value = slug_tmp;
+            })
+        })
     </script>
 @stop

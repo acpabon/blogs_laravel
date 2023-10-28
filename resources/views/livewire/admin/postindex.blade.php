@@ -1,7 +1,8 @@
 <div class="card">
     <div class="card-header">
-        <input wire:model="search" type="search" class="form-control" placeholder="Buscar">
-        <button wire:click.prevent="prueba()">Consultar</button>
+        <input wire:model.live="search" type="search" class="form-control" placeholder="Buscar">
+        <br>
+        <a href="{{ route('admin.posts.create') }}" class="btn btn-secondary">Agregar post</a>
     </div>
     <div class="card-body">
         <table class="table table-striped">
@@ -39,6 +40,6 @@
     </div>
 
     <div class="card-footer">
-        {{-- {{ $posts->links() }} --}}
+        {{ $posts->links() }}
     </div>
 </div>

@@ -15,8 +15,8 @@ class Postindex extends Component
     
     public function render()
     {
-        // $posts = Post::where('user_id', auth()->user()->id)->where('title', 'like', '%' . $this->search . '%')->latest('id')->paginate();
-        $posts = Post::where('user_id', auth()->user()->id)->where('title', 'like', '%' . $this->search . '%')->get();
+        $posts = Post::where('user_id', auth()->user()->id)->where('title', 'like', '%' . $this->search . '%')->latest('id')->paginate();
+        // $posts = Post::where('user_id', auth()->user()->id)->where('title', 'like', '%' . $this->search . '%')->get();
         return view('livewire.admin.postindex', compact('posts'));
     }
     
